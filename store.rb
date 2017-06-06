@@ -11,6 +11,7 @@
 # Ask them if they would like anything else.
 
 # Total the amount it will cost and add tax then display it to the user with a goodbye message.
+
 require 'pry'
 
 
@@ -42,8 +43,8 @@ end
 
 def choice
 	puts "What would you like to see? (type nothing if done)"
-	selection = gets.chomp.downcase
-	case selection
+	@selection = gets.chomp.downcase
+	case @selection
 	when "shirts"
 		shirts
 	when "pants"
@@ -67,8 +68,8 @@ def shirts
 		end
 
 	puts "Which would you like to see?"
-	selection = gets.chomp.downcase
-	case selection
+	@selection = gets.chomp.downcase
+	case @selection
 	when "short-sleeve"
 		puts "We have the following colors and logos:"
 		options = @inventory.dig "Shirts", "Short-sleeve"
@@ -76,9 +77,9 @@ def shirts
 			puts "We have #{color} for $#{cost}"
 		end
 		puts "Which would you like?"
-		selection = gets.chomp.capitalize
-		if selection == "Panda" || selection == "Blue" || selection == "Red" || selection == "White"
-			@total += options[selection].to_i
+		@selection = gets.chomp.capitalize
+		if @selection == "Panda" || @selection == "Blue" || @selection == "Red" || @selection == "White"
+			@total += options[@selection].to_i
 			finish_shopping
 		else
 			puts "We don't have that, sorry..."
@@ -92,9 +93,9 @@ def shirts
 			puts "We have #{color} for $#{cost}"
 		end
 		puts "Which would you like?"
-		selection = gets.chomp.capitalize
-		if selection == "Panda" || selection == "Blue" || selection == "Red" || selection == "White"
-			@total += options[selection].to_i
+		@selection = gets.chomp.capitalize
+		if @selection == "Panda" || @selection == "Blue" || @selection == "Red" || @selection == "White"
+			@total += options[@selection].to_i
 			finish_shopping
 		else
 			puts "We don't have that, sorry..."
@@ -109,9 +110,9 @@ def shirts
 			puts "We have #{color} for $#{cost}"
 		end
 		puts "Which would you like?"
-		selection = gets.chomp.capitalize
-		if selection == "Panda" || selection == "Blue" || selection == "Red" || selection == "White"
-			@total += options[selection].to_i
+		@selection = gets.chomp.capitalize
+		if @selection == "Panda" || @selection == "Blue" || @selection == "Red" || @selection == "White"
+			@total += options[@selection].to_i
 			finish_shopping
 		else
 			puts "We don't have that, sorry..."
@@ -134,8 +135,8 @@ def pants
 			puts style
 		end
 	puts "Which would you like to see?"
-	selection = gets.chomp.downcase
-	case selection
+	@selection = gets.chomp.downcase
+	case @selection
 	when "jeans"
 		puts "We have the following colors and logos:"
 		options = @inventory.dig "Pants", "Jeans"
@@ -143,9 +144,9 @@ def pants
 			puts "We have #{color} for $#{cost}"
 		end
 		puts "Which would you like?"
-		selection = gets.chomp.capitalize
-		if selection == "Skinny" || selection == "Slim-fit" || selection == "Straight-leg"
-			@total += options[selection].to_i
+		@selection = gets.chomp.capitalize
+		if @selection == "Skinny" || @selection == "Slim-fit" || @selection == "Straight-leg"
+			@total += options[@selection].to_i
 			finish_shopping
 		else
 			puts "We don't have that, sorry..."
@@ -159,9 +160,9 @@ def pants
 			puts "We have #{color} for $#{cost}"
 		end
 		puts "Which would you like?"
-		selection = gets.chomp.capitalize
-		if selection == "Black" || selection == "Blue" || selection == "White"
-			@total += options[selection].to_i
+		@selection = gets.chomp.capitalize
+		if @selection == "Black" || @selection == "Blue" || @selection == "White"
+			@total += options[@selection].to_i
 			finish_shopping
 		else
 			puts "We don't have that, sorry..."
@@ -184,17 +185,18 @@ def shoes
 			puts style
 		end
 	puts "Which would you like to see?"
-	selection = gets.chomp.downcase
-	case selection
+	@selection = gets.chomp.downcase
+	case @selection
 	when "tennis shoes"
-		puts "We have the following colors and logos:"
+		puts "We have the following colors and brands:"
 		options = @inventory.dig "Shoes", "Tennis Shoes"
 		options.each do |color, cost|
 			puts "We have #{color} for $#{cost}"
 		end
-
-		if selection == "Nike" || selection == "Sketchers" || selection == "Adidas"
-			@total += options[selection].to_i
+		puts "Which would you like?"
+		@selection = gets.chomp.capitalize
+		if @selection == "Nike" || @selection == "Sketchers" || @selection == "Adidas"
+			@total += options[@selection].to_i
 			finish_shopping
 		else
 			puts "We don't have that, sorry..."
@@ -207,8 +209,10 @@ def shoes
 		options.each do |color, cost|
 			puts "We have #{color} for $#{cost}"
 		end
-		if selection == "Vans" || selection == "Converse"
-			@total += options[selection].to_i
+		puts "Which would you like?"
+		@selection = gets.chomp.capitalize
+		if @selection == "Vans" || @selection == "Converse"
+			@total += options[@selection].to_i
 		else
 			puts "We don't have that, sorry..."
 			shoes
@@ -267,7 +271,7 @@ def finish_shopping
 	elsif yes_no == "n" || yes_no == "no"
 		check_total
 	else
-		puts "Is that a yes or no?"
+		puts "Is that a yes or a no?"
 		finish_shopping
 	end
 end
