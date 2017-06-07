@@ -45,6 +45,8 @@ def question1
 	when "a"
 		system "clear"
 		puts "Correct!"
+		sleep(1)
+		system "clear"
 		@money += 250000
 		question2
 	when "b", "c", "d"
@@ -69,11 +71,15 @@ def question2
 	when "c"
 		system "clear"
 		puts "Correct!"
+		sleep(1)
+		system "clear"
 		@money += 250000
 		question3
 	when "a", "b", "d"
+		system "clear"
 		puts "That's incorrect. You've lost $#{@money}. Thank you for playing."
 	else 
+		system "clear"
 		puts "That's not a valid answer."
 		question2
 	end
@@ -91,6 +97,8 @@ def question3
 	when "a"
 		system "clear"
 		puts "Correct!"
+		sleep(1)
+		system "clear"
 		@money += 250000
 		question4
 	when "b", "c", "d"
@@ -115,6 +123,8 @@ def question4
 	when "d"
 		system "clear"
 		puts "Correct!"
+		sleep(1)
+		system "clear"
 		@money += 250000
 		final
 	when "a", "b", "c"
