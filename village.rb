@@ -25,8 +25,9 @@ def night
 	if @victim == @animorph && @villagers.length >= 2
 		@victim = @villagers.sample
 		night
+	else
+		@survival += 1
 	end
-	@survival += 1
 end
 
 def dragon_kill
@@ -108,4 +109,7 @@ def play_again
 	end
 end
 
-game
+# game
+
+dragon
+puts @survival
