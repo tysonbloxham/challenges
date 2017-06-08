@@ -213,6 +213,7 @@ def shoes
 		@selection = gets.chomp.capitalize
 		if @selection == "Vans" || @selection == "Converse"
 			@total += options[@selection].to_i
+			finish_shopping
 		else
 			puts "We don't have that, sorry..."
 			shoes
