@@ -109,7 +109,4 @@ def play_again
 	end
 end
 
-# game
-
-dragon
-puts @survival
+game
