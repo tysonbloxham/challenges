@@ -8,16 +8,18 @@
 
 # Randomly choose a horse to win and pay out to the winner.
 
-@seabisque = {
+@seabisque = {"Tyson" => 200
 }
-@bojack = {
+@bojack = {"JC" => 300
 }
-@todd = {
+@todd = {"Director" => 1000
 }
-@secretary = {
+@secretary = {"Natalie" => 50
 }
 
 @horses = [@seabisque, @bojack, @todd, @secretary]
+
+@pot = 0
 
 def start
 	puts "Would you like to bet? Or Play?"
@@ -65,24 +67,43 @@ def betting
 	end
 end
 
+def winnings
+	@horses.each do |horse|
+		horse.each_value do |x|
+			@pot += x
+			puts @pot
+		end
+	end
+end
+
+
 def game
 	winner = @horses.sample
 	case winner
 	when @seabisque
-		@seabisque[@user] = @amount
-		puts @horses[0]
+		winnings
+		@seabisque.each do |person, money|
+			puts "#{person} has won $#{@pot / @seabisque.length}"
+		end
 	when @bojack
-		@bojack[@user] = @amount
-		puts @horses[1]
-	when todd
-		@todd[@user] = @amount
-		puts @horses[2]
+		winnings
+		@bojack.each do |person, money|
+			puts "#{person} has won $#{@pot / @bojack.length}"
+		end
+	when @todd
+		winnings
+		@todd.each do |person, money|
+			puts "#{person} has won $#{@pot / @todd.length}"
+		end
 	when @secretary
-		@secretary[@user] = @amount
-		puts @horses[3]
-	else
-		puts "You lost"
+		winnings
+		@secretary.each do |person, money|
+			puts "#{person} has won $#{@pot / @secretary.length}"
+		end
 	end
 end
 
 start
+
+# Next feature to implement:
+# Each person's bet makes up a percentage of the bet for each horse. This gets calculated for each person for their horse and then gets assigned to the hashes in place of their actual bet amount after the total for the pot is added. Then in the game after the winner is announced, the person's percentage gets multiplied by the total winnings accross all horses.
