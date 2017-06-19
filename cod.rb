@@ -7,7 +7,7 @@
 @bought = []
 
 def buying
-	puts "What bonus would you like to buy: Stamina Up, Double Tap, Juggernog, Speed Cola, or Pack A Punch"
+	puts "Which bonus would you like to buy: Stamina Up, Double Tap, Juggernog, Speed Cola, or Pack A Punch"
 	drugs = gets.chomp.downcase.strip
 	if drugs == "stamina up" && @points >= 2000 && !@bought.include?(drugs)
 		@speed += 10
@@ -43,33 +43,3 @@ def buying
 end
 
 buying
-
-
-
-
-
-
-
-
-
-
-# puts "Would you like to spend 3000 on a speedcola?"
-# speed_cola = gets.chomp.downcase.strip
-
-# if points >= 3000 && speed_cola == "yes"
-# 	reload -= 2
-# 	points -= 3000
-# else
-# 	puts "You didn't buy it."
-# end
-
-# puts "Would you like to buy a Juggernog?"
-# juggernog = gets.chomp.downcase.strip
-
-# if point>= 2500 && juggernog == "yes"
-# 	health *= 2
-# 	points -= 2500
-# else
-# 	puts "You didn't buy it."
-# end
-
