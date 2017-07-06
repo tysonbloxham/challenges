@@ -11,18 +11,23 @@ def game
     puts "Place your bets."
     sleep(0.5)
     puts "You can bet on a number, red or black, or even or odd. Or type $ if you want to cash out."
+    sleep(0.5)
+
     bets = gets.chomp
-    
     if bets == ""
         puts "Make a bet dummy!"
         game
     elsif bets == "$"
         puts "You won $#{@wallet}!!! Peace out!".green.underline
         return
-    elsif (bets.length <= 2 && bets.to_i <= 36) || bets == "red" || bets == "black" || bets == "odd" || bets == "even"
-        # puts "Look at the table and bet on one of those numbers"
-        # game
-    # elsif bets == "red" || bets == "black" || bets == "odd" || bets == "even"
+    elsif (bets.length <= 2 && bets.to_i <= 36) ||
+                 bets == "red" || 
+                 bets == "black" || 
+                 bets == "odd" || 
+                 bets == "even" || 
+                 bets == "first 12" || 
+                 bets == "second 12" || 
+                 bets == "third 12"
     else
         puts "That's not valid."
         game        
@@ -41,15 +46,14 @@ def game
             
     @wallet -= wager
 
-    # winner = @numbers.sample
-    winner = @numbers[-6]
+    winner = @numbers.sample
+    
 
     if winner.split(" ")[0].include?(bets)
         sleep(2)
         puts "The ball landed on #{winner}."
         puts "You win!!!".cyan.blink
         @wallet += (wager * 35)
-        losing_conditions
         puts "You now have $#{@wallet} remaining.".green
         sleep(3.5)
         game
@@ -58,7 +62,27 @@ def game
         puts "The ball landed on #{winner}."
         puts "You win!!!".cyan.blink
         @wallet += (wager * 2)
-        losing_conditions
+        puts "You now have $#{@wallet} remaining.".green
+        sleep(3.5)
+        game
+    elsif winner.to_i <= 12 && bets == "first 12"
+        puts "The ball landed on #{winner}."
+        puts "You win!!!".cyan.blink
+        @wallet += (wager * 3)
+        puts "You now have $#{@wallet} remaining.".green
+        sleep(3.5)
+        game
+    elsif winner.to_i <= 24 && bets == "second 12"
+        puts "The ball landed on #{winner}."
+        puts "You win!!!".cyan.blink
+        @wallet += (wager * 3)
+        puts "You now have $#{@wallet} remaining.".green
+        sleep(3.5)
+        game
+    elsif winner.to_i <= 36 && bets == "third 12"
+        puts "The ball landed on #{winner}."
+        puts "You win!!!".cyan.blink
+        @wallet += (wager * 3)
         puts "You now have $#{@wallet} remaining.".green
         sleep(3.5)
         game
@@ -67,7 +91,6 @@ def game
         puts "The ball landed on #{winner}."
         puts "You win!!!".cyan.blink
         @wallet += (wager * 2)
-        losing_conditions
         puts "You now have $#{@wallet} remaining.".green
         sleep(3.5)
         game
@@ -76,15 +99,14 @@ def game
         puts "The ball landed on #{winner}."
         puts "You win!!!".cyan.blink
         @wallet += (wager * 2)
-        losing_conditions
         puts "You now have $#{@wallet} remaining.".green
         sleep(3.5)
         game
     else
         sleep(2)
         puts "The ball landed on #{winner}."
-        puts 'Try again loser!!!'.red.blink
         losing_conditions
+        puts 'Try again loser!!!'.red.blink
         puts "You now have $#{@wallet} remaining.".green
         sleep(3.5)
         game
