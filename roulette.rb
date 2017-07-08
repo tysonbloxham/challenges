@@ -8,7 +8,7 @@ require 'colorized_string'
 
 def game
     system "clear"
-    puts "Place your bets."
+    puts "Place your bets. You have $#{@wallet}."
     sleep(0.5)
     puts "You can bet on a number, red or black, or even or odd. Or type $ if you want to cash out."
     sleep(0.5)
@@ -55,7 +55,7 @@ def game
         puts "You win!!!".cyan.blink
         @wallet += (wager * 35)
         puts "You now have $#{@wallet} remaining.".green
-        sleep(3.5)
+        sleep(5)
         game
     elsif winner.split(" ")[1].include?(bets)
         sleep(2)
@@ -63,28 +63,28 @@ def game
         puts "You win!!!".cyan.blink
         @wallet += (wager * 2)
         puts "You now have $#{@wallet} remaining.".green
-        sleep(3.5)
+        sleep(5)
         game
     elsif winner.to_i <= 12 && bets == "first 12"
         puts "The ball landed on #{winner}."
         puts "You win!!!".cyan.blink
         @wallet += (wager * 3)
         puts "You now have $#{@wallet} remaining.".green
-        sleep(3.5)
+        sleep(5)
         game
     elsif winner.to_i <= 24 && bets == "second 12"
         puts "The ball landed on #{winner}."
         puts "You win!!!".cyan.blink
         @wallet += (wager * 3)
         puts "You now have $#{@wallet} remaining.".green
-        sleep(3.5)
+        sleep(5)
         game
     elsif winner.to_i <= 36 && bets == "third 12"
         puts "The ball landed on #{winner}."
         puts "You win!!!".cyan.blink
         @wallet += (wager * 3)
         puts "You now have $#{@wallet} remaining.".green
-        sleep(3.5)
+        sleep(5)
         game
     elsif winner.to_i.even? && bets == "even"
         sleep(2)
@@ -92,7 +92,7 @@ def game
         puts "You win!!!".cyan.blink
         @wallet += (wager * 2)
         puts "You now have $#{@wallet} remaining.".green
-        sleep(3.5)
+        sleep(5)
         game
     elsif winner.to_i.odd? && bets == "odd"
         sleep(2)
@@ -100,7 +100,7 @@ def game
         puts "You win!!!".cyan.blink
         @wallet += (wager * 2)
         puts "You now have $#{@wallet} remaining.".green
-        sleep(3.5)
+        sleep(5)
         game
     else
         sleep(2)
@@ -108,7 +108,7 @@ def game
         losing_conditions
         puts 'Try again loser!!!'.red.blink
         puts "You now have $#{@wallet} remaining.".green
-        sleep(3.5)
+        sleep(5)
         game
     end
 end
