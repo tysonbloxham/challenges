@@ -7,8 +7,14 @@
 
 require './madWords.rb'
 
-getting_words
+class Story < Things::WordBank
+	def writing
+		puts story = "The #{@color} Dragon is the #{@superlative} Dragon of all. It has #{@adjective} #{@body_parts}, and a #{@body_part} shaped like a #{@noun}. It loves to eat #{@animals}, although it will feast on nearly anything. It is #{@adjective2} and #{@adjective3}. You must be #{@adjective4} around it, or you may end up as it`s meal!"
+	end
+end
 
-story = "The #{@color} Dragon is the #{@superlative} Dragon of all. It has #{@adjective} #{@body_parts}, and a #{@body_part} shaped like a #{@noun}. It loves to eat #{@animals}, although it will feast on nearly anything. It is #{@adjective2} and #{@adjective3}. You must be #{@adjective4} around it, or you may end up as it`s meal!"
+stuff = Story.new
 
-puts story
+stuff.getting_words
+
+stuff.writing
