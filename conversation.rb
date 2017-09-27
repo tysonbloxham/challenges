@@ -8,15 +8,23 @@
 
 # He answers 'Whatever.' to anything else.
 
-puts "Ask Bob anything."
-sentence = gets.chomp.split("").last
-case sentence
-when "?"
-	puts "Sure"
-when "!"
-	puts "Whoa, chill out"
-when nil
-	puts "Fine. Be that way"
-else 
-	puts "Whatever"
+def init
+	puts "Ask Bob anything."
+	sentence = gets.chomp.split("").last
+	response(sentence)
 end
+
+def response(sentence)
+	case sentence
+	when "?"
+		puts "Sure"
+	when "!"
+		puts "Whoa, chill out"
+	when nil
+		puts "Fine. Be that way"
+	else 
+		puts "Whatever"
+	end
+end
+
+init
