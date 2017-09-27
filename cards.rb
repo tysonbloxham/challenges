@@ -16,7 +16,7 @@ def draw
 		@cards.delete(pick)
 		draw
 	elsif input == "s" || @cards.length <= 0
-		puts "Thanks for playing."
+		puts "That's all of the cards. Thanks for playing."
 	else
 		puts "That's not one of the options"
 		draw
