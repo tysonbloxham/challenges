@@ -38,7 +38,7 @@ def dragon_kill
 end
 
 def magic_person
-	@new_villager = Faker::StarWars.character
+	@new_villager = Faker::VentureBros.character
 	if @villagers.include?(@new_villager)
 		magic_person
 	end
